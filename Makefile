@@ -107,7 +107,8 @@ else
 	$(INSTALL) "$$($(1)_PROBT_PKG)"/lib/_pypl.so "$(PREFIX)/$$($(1)_DIR)/pypl"
 	$(INSTALL) "$$($(1)_PROBT_PKG)"/lib/pypl.py "$(PREFIX)/$$($(1)_DIR)/pypl"
 endif
-	$(INSTALL) "$$($(1)_PROBT_PKG)"/lib/{PROBT,BOOST}_LICENSE.txt "$(PREFIX)/$$($(1)_DIR)/pypl"
+	$(INSTALL) "$$($(1)_PROBT_PKG)"/lib/PROBT_LICENSE.txt "$(PREFIX)/$$($(1)_DIR)/pypl"
+	$(INSTALL) "$$($(1)_PROBT_PKG)"/lib/BOOST_LICENSE.txt "$(PREFIX)/$$($(1)_DIR)/pypl"
 	if [ -f "$$($(1)_PROBT_PKG)"/lib/TCC_LICENSE.txt ]; then \
 		$(INSTALL) "$$($(1)_PROBT_PKG)"/lib/TCC_LICENSE.txt "$(PREFIX)/$$($(1)_DIR)/pypl"; fi
 	$(INSTALL) pyplpath.py "$(PREFIX)/$$($(1)_DIR)/pypl"
