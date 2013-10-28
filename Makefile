@@ -11,6 +11,8 @@
 
 WGET = "wget"
 ZIP = "7z"
+ZIP_OPTS = a -r
+UNZIP_OPTS = x -r
 INSTALL ?= /usr/bin/install
 PREFIX ?= artefacts
 PROBT_DOWNLOAD_PAGE := http://cauchy-web/telechargements/ProBT-2.3.0/
@@ -66,7 +68,7 @@ $(1)_PROBT_DOWNLOAD_PAGE ?= $(PROBT_DOWNLOAD_PAGE)
 $$($(1)_PROBT_PKG):
 	$(WGET) --no-verbose "$$($(1)_PROBT_DOWNLOAD_PAGE)$$($(1)_PROBT_PKG_ARC)"
 ifeq ($$($(1)_TARGET_OS),WINDOWS)
-	$(ZIP) x -r "$$($(1)_PROBT_PKG_ARC)" lib doc
+	$(ZIP) $(UNZIP_OPTS) "$$($(1)_PROBT_PKG_ARC)" lib doc
 else
 	tar xjf "$$($(1)_PROBT_PKG_ARC)" "$$($(1)_PROBT_PKG)/lib" "$$($(1)_PROBT_PKG)/doc"
 endif
@@ -123,7 +125,7 @@ $(PREFIX)/$$($(1)_DIR)/Documentation: $(PREFIX)/$$($(1)_DIR) $$($(1)_PROBT_PKG)
 
 $(PREFIX)/$$($(1)_DIR_ARC): $(PREFIX)/$$($(1)_DIR) $(PREFIX)/$$($(1)_DIR)/pypl $(PREFIX)/$$($(1)_DIR)/Documentation
 ifeq ($$($(1)_DIR_ARC_TYPE),ZIP)
-	zip -r "$(PREFIX)/$$($(1)_DIR_ARC)" "$(PREFIX)/$$($(1)_DIR)"
+	$(ZIP) $(ZIP_OPTS) "$(PREFIX)/$$($(1)_DIR_ARC)" "$(PREFIX)/$$($(1)_DIR)"
 else
 	tar cjf "$(PREFIX)/$$($(1)_DIR_ARC)" "$(PREFIX)/$$($(1)_DIR)"
 endif
