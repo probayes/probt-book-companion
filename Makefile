@@ -66,9 +66,9 @@ $(1)_PROBT_DOWNLOAD_PAGE ?= $(PROBT_DOWNLOAD_PAGE)
 $$($(1)_PROBT_PKG):
 	$(WGET) --no-verbose "$$($(1)_PROBT_DOWNLOAD_PAGE)$$($(1)_PROBT_PKG_ARC)"
 ifeq ($$($(1)_TARGET_OS),WINDOWS)
-	$(ZIP) x -r "$$($(1)_PROBT_PKG_ARC)" lib doc/README.txt
+	$(ZIP) x -r "$$($(1)_PROBT_PKG_ARC)" lib doc
 else
-	tar xjf "$$($(1)_PROBT_PKG_ARC)" "$$($(1)_PROBT_PKG)/lib" "$$($(1)_PROBT_PKG)/doc/README.txt"
+	tar xjf "$$($(1)_PROBT_PKG_ARC)" "$$($(1)_PROBT_PKG)/lib" "$$($(1)_PROBT_PKG)/doc"
 endif
 	rm "$$($(1)_PROBT_PKG_ARC)"
 
@@ -79,8 +79,8 @@ clean-$(1)::
 
 $(PREFIX)/$$($(1)_DIR):
 	$(INSTALL) -d "$(PREFIX)/$$($(1)_DIR)"
-	tar cf - --exclude CVS --exclude .cvsignore --exclude .DS_Store \
-		Examples | tar xf - -C "$(PREFIX)/$$($(1)_DIR)"
+	tar cf - --exclude CVS --exclude .cvsignore --exclude .DS_Store Examples \
+		| tar xf - -C "$(PREFIX)/$$($(1)_DIR)"
 	$(INSTALL) $$($(1)_README) "$(PREFIX)/$$($(1)_DIR)"
 	$(INSTALL) execall.py "$(PREFIX)/$$($(1)_DIR)"/Examples
 ifeq ($$($(1)_TARGET_OS),WINDOWS)
@@ -113,7 +113,14 @@ endif
 	$(INSTALL) pyplpath.py "$(PREFIX)/$$($(1)_DIR)/pypl"
 
 
-$(PREFIX)/$$($(1)_DIR_ARC): $(PREFIX)/$$($(1)_DIR) $(PREFIX)/$$($(1)_DIR)/pypl
+$(PREFIX)/$$($(1)_DIR)/Documentation: $(PREFIX)/$$($(1)_DIR) $$($(1)_PROBT_PKG)
+	$(INSTALL) -d "$(PREFIX)/$$($(1)_DIR)/Documentation"
+	tar cf - --exclude CVS --exclude .cvsignore --exclude .DS_Store \
+		-C "$$($(1)_PROBT_PKG)"/doc/html . \
+		| tar xf - -C "$(PREFIX)/$$($(1)_DIR)/Documentation"
+
+
+$(PREFIX)/$$($(1)_DIR_ARC): $(PREFIX)/$$($(1)_DIR) $(PREFIX)/$$($(1)_DIR)/pypl $(PREFIX)/$$($(1)_DIR)/Documentation
 ifeq ($$($(1)_DIR_ARC_TYPE),ZIP)
 	zip -r "$(PREFIX)/$$($(1)_DIR_ARC)" "$(PREFIX)/$$($(1)_DIR)"
 else

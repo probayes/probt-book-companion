@@ -23,7 +23,7 @@ Documentation
 The reference documentation is useful for users of the Python bindings
 of ProBT willing to modify and run the programs found in the bayesian
 programming book. To get started, point your web browser at
-  "MyDirectory/ProBtLinuxXX/html/index.html"
+  "MyDirectory/ProBtLinuxXX/Documentation/index.html"
 
 Please note that this documentation is designed for c++
 programmers. 98% of the functions share the same names, except for
