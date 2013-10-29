@@ -125,9 +125,9 @@ $(PREFIX)/$$($(1)_DIR)/Documentation: $(PREFIX)/$$($(1)_DIR) $$($(1)_PROBT_PKG)
 
 $(PREFIX)/$$($(1)_DIR_ARC): $(PREFIX)/$$($(1)_DIR) $(PREFIX)/$$($(1)_DIR)/pypl $(PREFIX)/$$($(1)_DIR)/Documentation
 ifeq ($$($(1)_DIR_ARC_TYPE),ZIP)
-	$(ZIP) $(ZIP_OPTS) "$(PREFIX)/$$($(1)_DIR_ARC)" "$(PREFIX)/$$($(1)_DIR)"
+	cd "$(PREFIX)" ; $(ZIP) $(ZIP_OPTS) "$$($(1)_DIR_ARC)" "$$($(1)_DIR)"
 else
-	tar cjf "$(PREFIX)/$$($(1)_DIR_ARC)" "$(PREFIX)/$$($(1)_DIR)"
+	tar cjf "$(PREFIX)/$$($(1)_DIR_ARC)" -C "$(PREFIX)" "$$($(1)_DIR)"
 endif
 
 
