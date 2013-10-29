@@ -10,7 +10,7 @@
 #TODO: distribute the C++ reference documentation ?
 
 WGET = "wget"
-ZIP = "7zr"
+ZIP = "7z"
 ZIP_OPTS = a -r
 UNZIP_OPTS = x -r
 INSTALL ?= /usr/bin/install
