@@ -95,7 +95,7 @@ endif
 $(PREFIX)/$$($(1)_DIR)/pypl: $(PREFIX)/$$($(1)_DIR) $$($(1)_PROBT_PKG)
 	$(INSTALL) -d "$(PREFIX)/$$($(1)_DIR)/pypl"
 ifeq ($$($(1)_TARGET_OS),WINDOWS)
-	$(INSTALL) "$$($(1)_PROBT_PKG)"/lib/SPL-$$($(1)_VC_VERSION).dll "$(PREFIX)/$$($(1)_DIR)/pypl"
+	$(INSTALL) "$$($(1)_PROBT_PKG)"/lib/spl-$$($(1)_VC_VERSION).dll "$(PREFIX)/$$($(1)_DIR)/pypl"
 	$(INSTALL) "$$($(1)_PROBT_PKG)"/lib/boost_*-$$($(1)_VC_VERSION)-mt-$$($(1)_BOOST_VERSION).dll "$(PREFIX)/$$($(1)_DIR)/pypl"
 	$(INSTALL) "$$($(1)_PROBT_PKG)"/lib/libtcc.dll "$(PREFIX)/$$($(1)_DIR)/pypl"
 	$(INSTALL) "$$($(1)_PROBT_PKG)"/lib/_pypl.pyd "$(PREFIX)/$$($(1)_DIR)/pypl"
