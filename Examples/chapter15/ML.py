@@ -1,9 +1,10 @@
 from pyplpath import *
-
 from pypl import *
+import os.path
+
 O = plSymbol('O',plRealType(-100,100))
 O_I=plSymbol('O_I',plIntegerType(0,2))
-file = ExDir+'chapter15/data/previous_O.csv'
+file = os.path.join(ExDir, 'chapter15', 'data', 'previous_O.csv')
 #define the data source ignoring unknown fields
 previous_O=plCSVDataDescriptor(file,O^O_I)
 previous_O.ignore_unknown_variables()
@@ -31,7 +32,7 @@ i=global_learner.learn(previous_O)
 list_distrib=global_learner.get_computable_object_list()
 print 'global learning \n',list_distrib[0],'\n',list_distrib[1]
 #continue learning 
-file1 =  ExDir+'chapter15/data/previous_O1.csv'
+file1 =  os.path.join(ExDir, 'chapter15', 'data', 'previous_O1.csv')
 
 previous_O1=plCSVDataDescriptor(file1,O)
 previous_O1.ignore_unknown_variables()

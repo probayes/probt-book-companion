@@ -1,7 +1,7 @@
 from pyplpath import *
-
 from pypl import *
 import math
+import os.path
 
 # definition of the variabes (4.3)
 Dir = plSymbol('Dir',plIntegerType(-10,10))
@@ -36,7 +36,7 @@ dl.push_back(plCndNormal(Vrot,Dir^Prox,fmean,fvar))
 Joint = plJointDistribution(Vrot^Dir^Prox,dl)
 
 #simulate following
-simulation_following_file=open(ExDir+'chapter4/data/following.csv','w')
+simulation_following_file=open(os.path.join(ExDir, 'chapter4', 'data', 'following.csv'),'w')
 allval = plValues(Dir^Prox^Vrot)
 
 for i in range(100):

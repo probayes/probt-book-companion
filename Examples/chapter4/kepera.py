@@ -1,7 +1,7 @@
 from pyplpath import *
-
 from pypl import *
 import csv
+import os.path
 
 def learner(filename):
     """
@@ -48,9 +48,9 @@ Vrot = plSymbol('Vrot',plIntegerType(-10,10))
 PDirProx=plUniform(Dir^Prox) 
 #print it 
 #learn a behavior here from a file with records obtained during following:
-file = ExDir+'chapter4/data/following.csv'
+file = os.path.join(ExDir, 'chapter4', 'data', 'following.csv')
 #or alternatively learn a behavior here from a file with records obtained during pushing:
-#file = ExDir+'chapter4/data/pushing.csv'
+#file = os.path.join(ExDir, 'chapter4', 'data', 'pushing.csv')
 
 PVrot_K_DirProx= learner(file).get_cnd_distribution()
 

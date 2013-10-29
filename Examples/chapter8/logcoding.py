@@ -32,7 +32,8 @@ jointlist.push_back(plFunctionalDirac(LAMBDA,A^B,plPythonExternalFunction(LAMBDA
 
 model=plJointDistribution(LAMBDA^A^B, jointlist)
 question = model.ask(A,LAMBDA)
-question.instantiate(1).compile().plot(ExDir+'chapter8/figures/logassignBtoA',PL_POSTSCRIPT_PLOT)
+question.instantiate(1).compile().plot(os.path.join(ExDir, 'chapter8', 'figures', 'logassignBtoA'),
+                                       PL_POSTSCRIPT_PLOT)
 
  
 jointlist=plComputableObjectList()
@@ -47,7 +48,8 @@ jointlist.push_back(plFunctionalDirac(LAMBDA,A^B,plPythonExternalFunction(LAMBDA
 
 model=plJointDistribution(LAMBDA^A^B, jointlist)
 question = model.ask(A,LAMBDA)
-question.instantiate(1).compile().plot(ExDir+'chapter8/figures/logassignBGausstoA',PL_POSTSCRIPT_PLOT)
+question.instantiate(1).compile().plot(os.path.join(ExDir, 'chapter8', 'figures', 'logassignBGausstoA'),
+                                       PL_POSTSCRIPT_PLOT)
 
 
 

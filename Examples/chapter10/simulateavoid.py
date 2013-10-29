@@ -1,8 +1,7 @@
 from pyplpath import *
-
 from pypl import *
 import math
-
+import os.path
 
 # definition of the variabes (4.3)
 Dir = plSymbol('Dir',plIntegerType(-10,10))
@@ -31,7 +30,7 @@ dl.push_back(plCndNormal(Vrot,Dir^Prox,fmean,fvar))
 Joint = plJointDistribution(Vrot^Dir^Prox,dl)
 
 #simulate avoid
-simulation_avoid_file=open(ExDir+'chapter10/data/avoiding.csv','w')
+simulation_avoid_file=open(os.path.join(ExDir, 'chapter10', 'data', 'avoiding.csv'), 'w')
 allval = plValues(Dir^Prox^Vrot)
 
 for i in range(100):

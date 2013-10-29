@@ -1,8 +1,8 @@
 from pyplpath import *
-
 from pypl import *
 #import math module
 from math import * 
+import os.path
 
 plError.ignore_this_message(122,True)
 
@@ -210,10 +210,10 @@ sensor_reading_values[B3]= 270
 PXYSI=PXYS.instantiate(sensor_reading_values)
 #takes several minutes 
 
-PXYSI.plot(ExDir+'chapter9/figures/PXYsample')
+PXYSI.plot(os.path.join(ExDir, 'chapter9', 'figures', 'PXYsample'))
 
 #PXYSIc = PXYSI
-#PXYSIc.to_eps(X,Y,ExDir+'chapter9/figures/','PXYS'  )
+#PXYSIc.to_eps(X, Y, os.path.join(ExDir, 'chapter9', 'figures'), 'PXYS')
 
 
 

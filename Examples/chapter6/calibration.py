@@ -1,7 +1,7 @@
 from pyplpath import *
-
 from pypl import *
 import math
+import os.path
 
 def WriteVector(V,filename):
     f = open(filename,"w")
@@ -70,7 +70,7 @@ model=plJointDistribution(S^O^F^H^C^I1^I0, JointDistributionList)
 print 'preparing calibration file : take a break  > 5 minutes'
 PO_K_I0I1CS = model.ask(O,I0^I1^S^C)
 compiled_PO_K_I0I1CS = PO_K_I0I1CS.compile()
-datafilename = ExDir+'chapter6/data/calibration.txt'
+datafilename = os.path.join(ExDir, 'chapter6', 'data', 'calibration.txt')
 table=plProbValueVector()
 compiled_PO_K_I0I1CS.tabulate(table)
 WriteVector(table,datafilename);

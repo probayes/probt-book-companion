@@ -1,8 +1,8 @@
 from pyplpath import *
-
 from pypl import *
 #import math module
 from math import * 
+import os.path
 
 #variables
 
@@ -45,8 +45,8 @@ bearing_model=plJointDistribution(H^B1^B0,JointDistributionList)
 PB0kH = bearing_model.ask(B0,H)
 PB0k225=PB0kH.instantiate(225)
 #to draw the dirtirubution used in the book 
-#PB0K225.plot(ExDir+'chapter7/figures/repulsiveB0',PL_POSTSCRIPT_PLOT  )
-PB0k225.plot(ExDir+'chapter7/figures/repulsiveB0')
+#PB0K225.plot(os.path.join(ExDir, 'chapter7', 'figures', 'repulsiveB0'), PL_POSTSCRIPT_PLOT)
+PB0k225.plot(os.path.join(ExDir, 'chapter7', 'figures', 'repulsiveB0'))
 
 PHkB0B1=bearing_model.ask(H,B1^B0)
 
@@ -66,7 +66,7 @@ def radiantodegree(x):
     else :
         return 360 + 180 * x / pi
 
-field=open(ExDir+'chapter7/figures/invpgmfield.fig','w')
+field = open(os.path.join(ExDir, 'chapter7', 'figures', 'invpgmfield.fig'), 'w')
 
 field.write('#FIG 3.2  Produced by xfig version 3.2.5b \n\
 Landscape\n\

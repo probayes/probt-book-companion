@@ -3,6 +3,7 @@ from pyplpath import *
 from pypl import *
 import csv
 from math import *
+import os.path
 
 
 ###### avoidance code based on learning #######
@@ -38,7 +39,7 @@ Vrot = plSymbol('Vrot',plIntegerType(-10,10))
 PDirProx=plUniform(Dir)*plUniform(Prox) 
 
 #use the file for avoidance  : use simulate simulateavoid.py to produce the file
-file = ExDir+'chapter10/data/avoiding.csv'
+file = os.path.join(ExDir, 'chapter10', 'data', 'avoiding.csv')
 
 PVrot_K_DirProx= learner(file).get_cnd_distribution()
 
@@ -82,17 +83,14 @@ PVrot.push(render_question,0) #avoidance
 PH_learned = plCndLearnHistogram(H,Prox)
 
 #define the distribution which needed to be learned 
-HLearner =plEMLearner( plUniform(Prox)* \
-                      plUniform(Dir)* \
-                      plUniform(Theta)* \
-                      PH_init * \
-                      PVrot,\
-                      [plLearnFrozenDistribution( plUniform(Prox)),\
-                       plLearnFrozenDistribution( plUniform(Dir)),\
-                       plLearnFrozenDistribution( plUniform(Theta)),\
-                       PH_learned,\
+HLearner =plEMLearner(plUniform(Prox) * plUniform(Dir) * plUniform(Theta) * PH_init * PVrot,
+                      [plLearnFrozenDistribution(plUniform(Prox)),
+                       plLearnFrozenDistribution(plUniform(Dir)),
+                       plLearnFrozenDistribution(plUniform(Theta)),
+                       PH_learned,
                        plLearnFrozenDistribution(PVrot)])
-datahoming = plCSVDataDescriptor(ExDir+'chapter10/data/homing.csv', Dir^Prox^Theta^H^Vrot)
+datahoming = plCSVDataDescriptor(os.path.join(ExDir, 'chapter10', 'data', 'homing.csv'), 
+                                 Dir^Prox^Theta^H^Vrot)
 
 #Perform Learning on experimental data
 HLearner.run(datahoming,0.01)
@@ -103,18 +101,3 @@ learned_model = HLearner.get_joint_distribution()
 home_question=learned_model.ask(Vrot,Dir^Prox^Theta)
 #use this question to classify the behavior 
 behavior_question=learned_model.ask(H,Prox)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    

@@ -1,8 +1,8 @@
 from pyplpath import *
-
 from pypl import *
 #import math module
 from math import * 
+import os.path
 
 #variables
 
@@ -129,8 +129,8 @@ sensor_reading_values[B3]= 270
 
 PXY=PXY_K_D1D2D3B1B2B3.instantiate(sensor_reading_values)
 #to draw the dirtirubution used in the book 
-#PXY.to_eps(X,Y,ExDir+'chapter7/figures/','loc00'  )
-PXY.plot(ExDir+'chapter7/figures/loc00_soft',PL_EPS_PLOT )
+#PXY.to_eps(X, Y, os.path.join(ExDir, 'chapter7', 'figures'), 'loc00')
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'loc00_soft'), PL_EPS_PLOT)
 #question 2 : when only the bearings are known 
 PXY_K_B1B2B3=localisation_model.ask(X^Y,B1^B2^B3)
 print PXY_K_B1B2B3
@@ -139,8 +139,8 @@ sensor_reading_values[B2]= 180
 sensor_reading_values[B3]= 270
 PXY=PXY_K_B1B2B3.instantiate(sensor_reading_values)
 #to draw the ditribution as in the book 
-#PXY.to_eps(X,Y,ExDir+'chapter7/figures/','loc00_with_bearings_only')
-PXY.plot(ExDir+'chapter7/figures/loc00_with_bearings_only_soft',PL_EPS_PLOT)
+#PXY.to_eps(X, Y, os.path.join(ExDir, 'chapter7', 'figures'), 'loc00_with_bearings_only')
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'loc00_with_bearings_only_soft'), PL_EPS_PLOT)
 
 #question 3 : when only the two distances are known 
 PXY_K_D2D3=localisation_model.ask(X^Y,D2^D3)
@@ -149,8 +149,8 @@ sensor_reading_values[D2]= 50
 sensor_reading_values[D3]= 50
 PXY=PXY_K_D2D3.instantiate(sensor_reading_values)
 #to draw the ditribution as in the book 
-#PXY.to_eps(X,Y,ExDir+'chapter7/figures/','loc00_with_D2_and_D3_only')
-PXY.plot(ExDir+'chapter7/figures/loc00_with_D2_and_D3_only_soft',PL_EPS_PLOT)
+#PXY.to_eps(X, Y, os.path.join(ExDir, 'chapter7', 'figures'), 'loc00_with_D2_and_D3_only')
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'loc00_with_D2_and_D3_only_soft'), PL_EPS_PLOT)
 
 #question 4 : with three distances but with a wrong distance for D3
 PXY_K_D1D2D3=localisation_model.ask(X^Y,D1^D2^D3)
@@ -160,8 +160,8 @@ sensor_reading_values[D2]= 50
 sensor_reading_values[D3]= 70
 PXY=PXY_K_D1D2D3.instantiate(sensor_reading_values)
 #to draw the ditribution as in the book 
-#PXY.to_eps(X,Y,ExDir+'chapter7/figures/','loc00_with_D1_D2_ok_and_D3_wrong')
-PXY.plot(ExDir+'chapter7/figures/loc00_with_D1_D2_ok_and_D3_wrong_soft',PL_EPS_PLOT)
+#PXY.to_eps(X, Y, os.path.join(ExDir, 'chapter7', 'figures'),'loc00_with_D1_D2_ok_and_D3_wrong')
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'loc00_with_D1_D2_ok_and_D3_wrong_soft'), PL_EPS_PLOT)
 
 #Estimating the location when one reading is an outlier (case 2)
 # here we assume the boat to be at [0, 0, 0]
@@ -174,8 +174,8 @@ sensor_reading_values[B2]= 100 #here is the incoherent value
 sensor_reading_values[B3]= 270
 PXY=PXY_K_D1D2D3B1B2B3.instantiate(sensor_reading_values)
 #to draw the ditribution as in the book 
-#PXY.to_eps(X,Y,ExDir+'chapter7/figures/','loc00_with_one_error'  )
-PXY.plot(ExDir+'chapter7/figures/loc00_with_one_error_soft',PL_EPS_PLOT  )
+#PXY.to_eps(X, Y, os.path.join(ExDir, 'chapter7', 'figures'),'loc00_with_one_error')
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'loc00_with_one_error_soft'), PL_EPS_PLOT  )
 
 
 
@@ -184,7 +184,7 @@ sensor_reading_values[B2]= 180 #coherent value
 #question 4 : Where to look for landmark 3 if we know the location of the landmarks 1 and  2
 PB3_K_B1B2D1D2=localisation_model.ask(B3,B1^B2^D1^D2)
 PB3=PB3_K_B1B2D1D2.instantiate(sensor_reading_values)
-PB3.plot(ExDir+'chapter7/figures/B3',PL_POSTSCRIPT_PLOT )
+PB3.plot(os.path.join(ExDir, 'chapter7', 'figures', 'B3'), PL_POSTSCRIPT_PLOT)
 
 #new model when standard deviation on Bearings  depends on distance  
 def g_b_1(Output_,Input_):
@@ -235,6 +235,6 @@ sensor_reading_values[B2]= 180
 sensor_reading_values[B3]= 270
 PXY=PXY_K_B1B2B3.instantiate(sensor_reading_values)
 #to draw the ditribution as in the book 
-#PXY.to_eps(X,Y,ExDir+'chapter7/figures/','loc00_M2_with_bearings_only')
-PXY.plot(ExDir+'chapter7/figures/loc00_M2_with_bearings_only_soft',PL_EPS_PLOT)
+#PXY.to_eps(X, Y, os.path.join(ExDir, 'chapter7', 'figures), 'loc00_M2_with_bearings_only')
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'loc00_M2_with_bearings_only_soft'), PL_EPS_PLOT)
 

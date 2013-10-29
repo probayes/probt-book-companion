@@ -1,7 +1,7 @@
 from pyplpath import *
-
 from pypl import *
 import math
+import os.path
 
 def ReadVector(filename) :
     f = open(filename,"r")
@@ -12,9 +12,8 @@ def ReadVector(filename) :
     f.close()
     return fV
 
-#read the file created by calibraiton.py
-dir= 'C:/Users/mazer/Documents/Publications/BPbook/Chapters/chapter6/'
-ProbaFromCalib=ReadVector( ExDir+'chapter6/data/calibration.txt')
+#read the file created by calibration.py
+ProbaFromCalib = ReadVector(os.path.join(ExDir, 'chapter6', 'data', 'calibration.txt'))
 
 #generic sensor model 
 def WGenericsensorModel(S,I,F):
@@ -94,11 +93,11 @@ question=model.ask(O[3],I0^I1^I3^S^C)
 print question
 
 resultA = question.instantiate([2,8,10,5,5,7,9,0,0,0,0])
-#resultA.plot(ExDir+'chapter6/figures/DirectO3WithCEqualZero')
+#resultA.plot(os.path.join(ExDir, 'chapter6', 'figures', 'DirectO3WithCEqualZero'))
 resultB = question.instantiate([2,8,10,5,5,7,9,5,5,5,5])
-#resultB.plot(ExDir+'chapter6/figures/DirectO3WithCEqualFive')
+#resultB.plot(os.path.join(ExDir, 'chapter6', 'figures', 'DirectO3WithCEqualFive'))
 resultC = question.instantiate([2,8,10,5,5,7,9,10,10,10,10])
-#resultC.plot(ExDir+'chapter6/figures/DirectO3WithCEqualTen')
+#resultC.plot(os.path.join(ExDir, 'chapter6', 'figures', 'DirectO3WithCEqualTen'))
 
 #define the question to get the best control 
 question1=model.ask(C,I0^I1^I3^S^O[3])
@@ -117,7 +116,7 @@ print compiled_resultD.compute([6,6,4,9])
 #using control = 6,6,4,9 
 resultE = question.instantiate([2,8,10,5,5,7,9,6,6,4,9])
 print resultE.compile()
-#resultE.plot(ExDir+'chapter6/figures/DirectO3WithCEqualOptimum')
+#resultE.plot(os.path.join(ExDir, 'chapter6', 'figures', 'DirectO3WithCEqualOptimum'))
 
 #introducing a constraint
 H=plSymbol('H',plIntegerType(0,1))
@@ -163,7 +162,7 @@ known_val[S[3]]=9
 opt_known_val = known_val^new_opt_val
 print '5: ',new_opt_val
 newresultA = question.instantiate(opt_known_val)
-#newresultA.plot(ExDir+'chapter6/figures/NewDirectO3WithCEqualOptfor5')
+#newresultA.plot(os.path.join(ExDir, 'chapter6', 'figures', 'NewDirectO3WithCEqualOptfor5'))
 
 #water quality greater than 7
 newresultD=newquestion1.instantiate([2,8,10,5,5,7,9,1,7])
@@ -172,7 +171,7 @@ new_opt_val = compiled_newresultD.best()
 print '7: ', new_opt_val
 opt_known_val = known_val^new_opt_val
 newresultA = question.instantiate(opt_known_val)
-#newresultA.plot(ExDir+'chapter6/figures/NewDirectO3WithCEqualOptfor7')
+#newresultA.plot(os.path.join(ExDir, 'chapter6', 'figures', 'NewDirectO3WithCEqualOptfor7'))
 
 #water quality greater than 8
 newresultD=newquestion1.instantiate([2,8,10,5,5,7,9,1,8])
@@ -181,7 +180,7 @@ new_opt_val = compiled_newresultD.best()
 print '8: ',new_opt_val
 opt_known_val = known_val^new_opt_val
 newresultA = question.instantiate(opt_known_val)
-#newresultA.plot(ExDir+'chapter6/figures/NewDirectO3WithCEqualOptfor8')
+#newresultA.plot(os.path.join(ExDir, 'chapter6', 'figures', 'NewDirectO3WithCEqualOptfor8'))
 
 
 #Diagnosis
@@ -217,34 +216,4 @@ while quantile < 0.95:
 #to produce figure 
 F2question = model.ask(F[2],I0^I1^I3^S^C^O[3])
 diagnosis_F2 = F2question.instantiate([2,8,10,5,5,4,9,5,5,5,5,7])
-#diagnosis_F2.plot(ExDir+'chapter6/figures/diagnosis_F2')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#diagnosis_F2.plot(os.path.join(ExDir, 'chapter6', 'figures', 'diagnosis_F2'))

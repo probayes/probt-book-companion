@@ -1,7 +1,7 @@
 from pyplpath import *
-
 from pypl import *
 from math import * 
+import os.path
 
 #variables
 
@@ -86,24 +86,24 @@ sensor_reading_values[B3]= 270
 #estimating the location with low visibility 
 PXY_K_B1B2B3=localisation_model.ask(X^Y,B1^B2^B3)
 PXY=PXY_K_B1B2B3.instantiate(sensor_reading_values)
-PXY.plot(ExDir+'chapter7/figures/loc00_with_ancillary_set_to_false'  )
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'loc00_with_ancillary_set_to_false'))
 
 #estimating the location with High visibility 
 localisation_model.replace(V,plProbTable(V,[1,0]))
 PXY_K_B1B2B3=localisation_model.ask(X^Y,B1^B2^B3)
 PXY=PXY_K_B1B2B3.instantiate(sensor_reading_values)
-PXY.plot(ExDir+'chapter7/figures/loc00_with_ancillary_set_to_true'  )
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'loc00_with_ancillary_set_to_true'))
 
 #estimating the location with low visibility 
 localisation_model.replace(V,plProbTable(V,[0.1,0.9]))
 PXY_K_B1B2B3=localisation_model.ask(X^Y,B1^B2^B3)
 PXY=PXY_K_B1B2B3.instantiate(sensor_reading_values)
-PXY.plot(ExDir+'chapter7/figures/loc00_with_soft_evidence'  )
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'loc00_with_soft_evidence'))
 
 
 #estimating the location with approximate visibility 
 localisation_model.replace(V,plProbTable(V,[0.5,0.5]))
 PXY_K_B1B2B3=localisation_model.ask(X^Y,B1^B2^B3)
 PXY=PXY_K_B1B2B3.instantiate(sensor_reading_values)
-PXY.plot(ExDir+'chapter7/figures/loc00_with_soft_evidence_05'  )
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'loc00_with_soft_evidence_05'))
 

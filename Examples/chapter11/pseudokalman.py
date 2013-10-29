@@ -1,9 +1,9 @@
 from pyplpath import *
-
 from pypl import *
 #import math module
 import math
 from math import * 
+import os.path
 
 #variables
 
@@ -83,7 +83,7 @@ for val in V :
     #estimate the state 
     PXY=PXY_K_B1B2B3.instantiate(sensor_reading_values)
     compiled_PXY=PXY.compile()
-    outputfile = ExDir+'chapter11/figures/finalPXY_{0}'.format(i)
+    outputfile = os.path.join(ExDir, 'chapter11', 'figures', 'finalPXY_{0}'.format(i))
     compiled_PXY.plot(outputfile)
     #Prepare next iteration  
     compiled_PXY.rename(Xt_1^Yt_1)

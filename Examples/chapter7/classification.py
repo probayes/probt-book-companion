@@ -1,9 +1,9 @@
 from pyplpath import *
-
 # import the pypl module
 from pypl import *
 #import math module
 from math import * 
+import os.path
 
 #variables
 
@@ -181,8 +181,8 @@ vCB[B3] = 'SE'
 vCB[C]=1
 PXY=question_on_XY.instantiate(vCB)
 #to draw the ditribution as in the book 
-#PXY.to_eps(X,Y,ExDir+'chapter7/figures/','Whereweare-SW-NW-SE')
-PXY.plot(ExDir+'chapter7/figures/Whereweare-SW-NW-SE_soft',PL_EPS_PLOT)
+#PXY.to_eps(X, Y, os.path.join(ExDir, 'chapter7', 'figures'),'Whereweare-SW-NW-SE')
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'Whereweare-SW-NW-SE_soft'), PL_EPS_PLOT)
 
 vCB[B1] = 'SW'
 vCB[B2] = 'SW'
@@ -190,16 +190,16 @@ vCB[B3] = 'SW'
 vCB[C]=0
 PXY=question_on_XY.instantiate(vCB)
 #to draw the ditribution as in the book 
-#PXY.to_eps(X,Y,ExDir+'chapter7/figures/','Whereweare-SW-SW-SW')
-PXY.plot(ExDir+'chapter7/figures/Whereweare-SW-SW-SW_soft',PL_EPS_PLOT)
+#PXY.to_eps(X, Y, os.path.join(ExDir, 'chapter7', 'figures'), 'Whereweare-SW-SW-SW')
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'Whereweare-SW-SW-SW_soft'), PL_EPS_PLOT)
 
 "if we do not know if we are in danger or not"
 
 "SW SW SW"
 PXY = localisation_with_bell_model.ask(X^Y,B1^B2^B3).instantiate(vCB)
 #to draw the ditribution as in the book 
-#PXY.to_eps(X,Y,ExDir+'chapter7/figures/','Whereweare')
-PXY.plot(ExDir+'chapter7/figures/Whereweare_soft',PL_EPS_PLOT)
+#PXY.to_eps(X, Y, os.path.join(ExDir, 'chapter7', 'figures'),'Whereweare')
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'Whereweare_soft'), PL_EPS_PLOT)
 
 vCB[B1] = 'SW'
 vCB[B2] = 'NW'
@@ -208,8 +208,8 @@ vCB[B3] = 'SE'
 "SW NW SE"
 PXY = localisation_with_bell_model.ask(X^Y,B1^B2^B3).instantiate(vCB)
 #to draw the ditribution as in the book 
-#PXY.to_eps(X,Y,ExDir+'chapter7/figures/','WhereweareD')
-PXY.plot(ExDir+'chapter7/figures/WhereweareD_soft',PL_EPS_PLOT)
+#PXY.to_eps(X, Y, os.path.join(ExDir, 'chapter7', 'figures'), 'WhereweareD')
+PXY.plot(os.path.join(ExDir, 'chapter7', 'figures', 'WhereweareD_soft'), PL_EPS_PLOT)
 
 
 

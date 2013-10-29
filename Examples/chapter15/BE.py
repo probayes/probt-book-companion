@@ -1,9 +1,10 @@
 from pyplpath import *
-
+import os.path
 from pypl import *
+
 O = plSymbol('O',plIntegerType(0,1))
 L = plSymbol('L',plRealType(0,1))
-file = ExDir+'chapter15/data/B_O.csv'
+file = os.path.join(ExDir, 'chapter15', 'data', 'B_O.csv')
 #define the data source ignoring unknown fields
 previous_O=plCSVDataDescriptor(file,O)
 #define the type of Bayesian learner 

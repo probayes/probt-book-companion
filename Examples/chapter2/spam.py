@@ -1,3 +1,4 @@
+import os.path
 from pyplpath import *
 
 # import the pypl module
@@ -45,7 +46,7 @@ def build_spam_question (nf, nfi, nt , nti):
         JointDistributionList.push_back(P_Wi_K_Spam)
 #define the model
     model = plJointDistribution(Spam^W, JointDistributionList)
-    model.draw_graph(ExDir+"chapter2/data/spam_graph")
+    model.draw_graph(os.path.join(ExDir, "chapter2", "data", "spam_graph"))
 #define the question
     quest = model.ask(Spam,W)
     v = plValues(W)

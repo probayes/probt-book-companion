@@ -1,6 +1,7 @@
 from pyplpath import *
-
 from pypl import *
+import os.path
+
 C = plSymbol('C',plIntegerType(0,1))
 W = plSymbol('W',plRealType(0,100))
 #define a ML learner for a binomial law
@@ -15,7 +16,7 @@ pWkC_init.push(plNormal(W,70.0,40.0),1)
 learner=plEMLearner(pC_init*pWkC_init,
                     [pC_learner,pW_learner])
 #define the data source 
-file = ExDir+'chapter15/data/weights.csv'
+file = os.path.join(ExDir, 'chapter15', 'data', 'weights.csv')
 data = plCSVDataDescriptor(file,W)
 #perform learning stop with a threshold 
 learner.run(data,10e-9)

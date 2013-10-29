@@ -1,7 +1,8 @@
 from pyplpath import *
-
-file = ExDir+'chapter15/data/weights.csv'
 from pypl import *
+import os.path
+
+file = os.path.join(ExDir, 'chapter15', 'data', 'weights.csv')
 C = plSymbol('C',plIntegerType(0,1))
 W = plSymbol('W',plRealType(0,100))
 #define a binomial law P(C=1) = 0.55

@@ -1,8 +1,8 @@
 from pyplpath import *
-
 from pypl import *
 import csv
 from math import *
+import os.path
 
 
 ###### avoidance code based on learning #######
@@ -52,7 +52,7 @@ Vrot = plSymbol('Vrot',plIntegerType(-10,10))
 PDirProx=plComputableObject(plUniform(Dir)*plUniform(Prox))
 
 #use the file for avoidance  : use simulate simulateavoid.py to produce the file
-file = ExDir+'chapter10/data/avoiding.csv'
+file = os.path.join(ExDir, 'chapter10', 'data', 'avoiding.csv')
 
 PVrot_K_DirProx= learner(file).get_cnd_distribution()
 
@@ -91,9 +91,9 @@ def generic_H_prob_function(alpha,beta):
     return H_prob_function
 
 H=plSymbol("H",plIntegerType(0,1))
-PH = plCndAnonymousDistribution(\
-      H,Prox,plPythonExternalProbFunction( \
-      H^Prox,generic_H_prob_function(9,0.25 )))
+PH = plCndAnonymousDistribution(
+    H,Prox,plPythonExternalProbFunction(
+        H^Prox,generic_H_prob_function(9,0.25 )))
 #H is used a key to select the proper behavior
 PVrot=plDistributionTable(Vrot,Dir^Prox^Theta^H,H)
 PVrot.push(phototaxy_question,1) #phototaxy
@@ -115,15 +115,15 @@ behavior_question=home_specification.ask(H,Vrot^Dir^Prox^Theta)
 
 
 #simulate homing
-simulation_homing_file=open(ExDir+'chapter10/data/homing.csv','w')
+simulation_homing_file=open(os.path.join(ExDir, 'chapter10', 'data', 'homing.csv'), 'w')
 allval = plValues(Dir^Prox^Theta^H^Vrot)
 
 simulation_homing_file.write('Dir;Prox;Theta;H;Vrot\n')
 
 for i in range(100):
     allval = home_specification.draw()
-    simulation_homing_file.write('{0};{1};{2};{3};{4}\n'.format(\
-            allval[Dir],allval[Prox],allval[Theta],allval[H],allval[Vrot]))
+    simulation_homing_file.write('{0};{1};{2};{3};{4}\n'.format(
+        allval[Dir],allval[Prox],allval[Theta],allval[H],allval[Vrot]))
 simulation_homing_file.close()
 
 
