@@ -32,10 +32,8 @@ else
     PYTHONPATH := $(PL_DIR)lib:/usr/local/lib/python2.7/dist-packages/:$(PYTHONPATH)
 endif
 
-$(PROBT_PKG_ARC):
+ProBT:
 	$(WGET) --no-verbose "$(PROBT_DOWNLOAD_PAGE)$(PROBT_PKG_ARC)"
-
-ProBT: $(PROBT_PKG_ARC)
 ifeq ($(MSVC),1)
 	$(ZIP) x -r $(PROBT_PKG_ARC) lib
 else
