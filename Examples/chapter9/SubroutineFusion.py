@@ -73,7 +73,7 @@ JointDistributionList.push_back(plProbTable(A2,[0.8,0.2]))
 JointDistributionList.push_back(plProbTable(B2,[0.9,0.1]))
 #define the fault tree for sensor 2
 extfunctionalmodel=plPythonExternalFunction(F2,A2^B2,external_and)
-JointDistributionList.push_back(plFunctionalDirac(F2,A2^B2,extfunctionalmodel))
+JointDistributionList.push_back(plCndDeterministic(F2,A2^B2,extfunctionalmodel))
 #define the sensormodel
 sensordistrib=plDistributionTable(D2,X^Y^F2,F2)
 #push the standard model when the sensor is working F2=0
@@ -105,7 +105,7 @@ JointDistributionList.push_back(plProbTable(A3,[0.99,0.01]))
 JointDistributionList.push_back(plProbTable(B3,[0.98,0.02]))
 #define the fault tree for sensor 3
 extfunctionalmodel=plPythonExternalFunction(F3,A3^B3,external_or)
-JointDistributionList.push_back(plFunctionalDirac(F3,A3^B3,extfunctionalmodel))
+JointDistributionList.push_back(plCndDeterministic(F3,A3^B3,extfunctionalmodel))
 #define the sensormodel
 sensordistrib=plDistributionTable(D3,X^Y^F3,F3)
 #push the standard model when the sensor is working : F3=0

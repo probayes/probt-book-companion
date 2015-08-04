@@ -23,12 +23,12 @@ LAMBDA = plSymbol('LAMBDA',plIntegerType(0,1))
 jointlist=plComputableObjectList()
 jointlist.push_back(plUniform(A))
 jointlist.push_back(plUniform(B))
-diracDistrib = plFunctionalDirac(LAMBDA,A^B,plPythonExternalFunction(LAMBDA,A^B,LogCoding))
+diracDistrib = plCndDeterministic(LAMBDA,A^B,plPythonExternalFunction(LAMBDA,A^B,LogCoding))
 allvals = plValues(A^B^LAMBDA)
 allvals[A]=3
 allvals[B]=9
 print diracDistrib.instantiate(allvals)
-jointlist.push_back(plFunctionalDirac(LAMBDA,A^B,plPythonExternalFunction(LAMBDA,A^B,LogCoding)))
+jointlist.push_back(plCndDeterministic(LAMBDA,A^B,plPythonExternalFunction(LAMBDA,A^B,LogCoding)))
 
 model=plJointDistribution(LAMBDA^A^B, jointlist)
 question = model.ask(A,LAMBDA)
@@ -39,12 +39,12 @@ question.instantiate(1).compile().plot(os.path.join(ExDir, 'chapter8', 'figures'
 jointlist=plComputableObjectList()
 jointlist.push_back(plUniform(A))
 jointlist.push_back(plNormal(B,32,30))
-diracDistrib = plFunctionalDirac(LAMBDA,A^B,plPythonExternalFunction(LAMBDA,A^B,LogCoding))
+diracDistrib = plCndDeterministic(LAMBDA,A^B,plPythonExternalFunction(LAMBDA,A^B,LogCoding))
 allvals = plValues(A^B^LAMBDA)
 allvals[A]=3
 allvals[B]=9
 print diracDistrib.instantiate(allvals)
-jointlist.push_back(plFunctionalDirac(LAMBDA,A^B,plPythonExternalFunction(LAMBDA,A^B,LogCoding)))
+jointlist.push_back(plCndDeterministic(LAMBDA,A^B,plPythonExternalFunction(LAMBDA,A^B,LogCoding)))
 
 model=plJointDistribution(LAMBDA^A^B, jointlist)
 question = model.ask(A,LAMBDA)

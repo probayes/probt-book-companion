@@ -60,9 +60,9 @@ JointDistributionList.push_back(plUniform(H))
 JointDistributionList.push_back(plUniform(F))
 
 extfunctionalmodel=plPythonExternalFunction(O,I0^I1^C^F^H,WfunctionalModel)
-JointDistributionList.push_back(plFunctionalDirac(O,I0^I1^C^F^H,extfunctionalmodel))
+JointDistributionList.push_back(plCndDeterministic(O,I0^I1^C^F^H,extfunctionalmodel))
 extsensormodel=plPythonExternalFunction(S,I0^F,WsensorModel)
-JointDistributionList.push_back(plFunctionalDirac(S,I0^F,extsensormodel))
+JointDistributionList.push_back(plCndDeterministic(S,I0^F,extsensormodel))
 
 model=plJointDistribution(S^O^F^H^C^I1^I0, JointDistributionList)
 

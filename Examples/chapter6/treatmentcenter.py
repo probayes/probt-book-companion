@@ -45,13 +45,13 @@ for i in range(4) :
 extsensormodel=plPythonExternalFunction(S[0], \
                                         I0^F[0], \
                                         WGenericsensorModel(S[0],I0,F[0]))
-JointDistributionList.push_back(plFunctionalDirac(S[0],I0^F[0],extsensormodel))
+JointDistributionList.push_back(plCndDeterministic(S[0],I0^F[0],extsensormodel))
 
 #Conditional distribution on S[1]
 extsensormodel=plPythonExternalFunction(S[1], \
                                         I0^F[1], \
                                         WGenericsensorModel(S[1],I0,F[1]))
-JointDistributionList.push_back(plFunctionalDirac(S[1],I0^F[1],extsensormodel))
+JointDistributionList.push_back(plCndDeterministic(S[1],I0^F[1],extsensormodel))
 
 
 #Conditional distribution on O[0] from "calibraiton" 
@@ -63,13 +63,13 @@ JointDistributionList.push_back(cnddist)
 extsensormodel=plPythonExternalFunction(S[2], \
                                         O[0]^F[2], \
                                         WGenericsensorModel(S[2],O[0],F[2]))
-JointDistributionList.push_back(plFunctionalDirac(S[2],O[0]^F[2],extsensormodel))
+JointDistributionList.push_back(plCndDeterministic(S[2],O[0]^F[2],extsensormodel))
 
 #Conditional distribution on S[3]
 extsensormodel=plPythonExternalFunction(S[3], \
                                         I3^F[3], \
                                         WGenericsensorModel(S[3],I3,F[3]))
-JointDistributionList.push_back(plFunctionalDirac(S[3],I3^F[3],extsensormodel))
+JointDistributionList.push_back(plCndDeterministic(S[3],I3^F[3],extsensormodel))
 
 
 #Conditional distribution on O[1] from "calibration" 
@@ -137,7 +137,7 @@ constraintmodel =plPythonExternalFunction(H, \
                                         VALMIN^O[3], \
 
                                         constraint)
-NewJointDistributionList.push_back(plFunctionalDirac(H,VALMIN^O[3],constraintmodel))
+NewJointDistributionList.push_back(plCndDeterministic(H,VALMIN^O[3],constraintmodel))
 
 #define a new model
 newmodel=plJointDistribution(I0^I1^I3^F^S^C^O^H^VALMIN, NewJointDistributionList)

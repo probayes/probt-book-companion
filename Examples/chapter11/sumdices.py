@@ -15,10 +15,10 @@ def generic_dirac_si(i) :
 def dices_game(O,S) :
     JointDistributionList=plComputableObjectList()
     JointDistributionList.push_back(plUniform(O[1]))
-    JointDistributionList.push_back(plFunctionalDirac(S[1],O[1],plPythonExternalFunction(S[1],O[1],dirac_01_S1)))
+    JointDistributionList.push_back(plCndDeterministic(S[1],O[1],plPythonExternalFunction(S[1],O[1],dirac_01_S1)))
     for i in range(2,len(S)):
         JointDistributionList.push_back(plUniform(O[i]))
-        JointDistributionList.push_back(plFunctionalDirac(S[i],S[i-1]^O[i],plPythonExternalFunction(S[i],S[i-1]^O[i],generic_dirac_si(i))))
+        JointDistributionList.push_back(plCndDeterministic(S[i],S[i-1]^O[i],plPythonExternalFunction(S[i],S[i-1]^O[i],generic_dirac_si(i))))
     return plJointDistribution(JointDistributionList)
 
 
