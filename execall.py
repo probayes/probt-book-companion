@@ -65,11 +65,11 @@ fast_examples = [
     'chapter15/getlambda.py'
 ]
 
-plError.ignore_this_message(122,1)
-plError.ignore_this_message(38,1)
-plError.ignore_this_message(107,1)
-plError.ignore_this_message(122,1)
-plError.ignore_this_message(37,1)
+plError.ignore_this_message(122, True)
+plError.ignore_this_message(38, True)
+plError.ignore_this_message(107, True)
+plError.ignore_this_message(122, True)
+plError.ignore_this_message(37, True)
 
 for example in fast_examples if fast else all_examples:
     print 'executing', example

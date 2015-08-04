@@ -70,7 +70,7 @@ phototaxy_question=phototaxy_description.ask(Vrot,Theta)
 H=plSymbol("H",plIntegerType(0,1))
 
 PH_init= plDistributionTable(H,Prox,Prox)
-random=1
+random=True
 
 for i in plValues(Prox):
     PH_init.push(plProbTable(H,random),i)
