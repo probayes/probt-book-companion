@@ -26,10 +26,7 @@ decomposition= posterior*plCndBinomial(O,L)
 #define de joint distribution 
 joint = plJointDistribution(decomposition) 
 #tell the interpreter to use 1000 sampling points to appoximate the integral
-qu=joint.ask_mc_sample(O,1000)
+qu=joint.ask_mc_nsamples(O,1000)
 #tell the interpreter to stop integrating
 #when the precision is below 0.001
-qu=joint.ask_mc_threshold(O,0.001)
-
-
-
+qu=joint.ask_mc_convergence(O,0.001)
