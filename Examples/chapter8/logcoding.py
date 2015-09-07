@@ -16,9 +16,9 @@ def LogCoding(Output_, Input_):
 WBtype = plIntegerType(1,255)
 WAtype = plIntegerType(1,7)
 
-A=plSymbol('A',WAtype)
-B=plSymbol('B',WBtype)
-LAMBDA = plSymbol('LAMBDA',plIntegerType(0,1))
+A=plVariable('A',WAtype)
+B=plVariable('B',WBtype)
+LAMBDA = plVariable('LAMBDA',plIntegerType(0,1))
 
 jointlist=plComputableObjectList()
 jointlist.push_back(plUniform(A))

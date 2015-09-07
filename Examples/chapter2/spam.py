@@ -22,9 +22,9 @@ def build_spam_question (nf, nfi, nt , nti):
 #define a binary type
     binary_type = plIntegerType(0,1)
 #define a binary variable
-    Spam = plSymbol("Spam",binary_type)
+    Spam = plVariable("Spam",binary_type)
 #define N binary variable with
-    W = plArray("W",binary_type,1,N)
+    W = plVariableCollection("W",binary_type,1,N)
 #define a prior distribution probability on Spam 
     P_Spam = plProbTable(Spam,[nf,nt])
     print 'P_spam',P_Spam

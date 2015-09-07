@@ -12,22 +12,22 @@ grid_discretization_steps = grid_half_dimension * 2
 
 #define the probabilistic variables associated to location 
 coordinate_type = plIntegerType(-grid_half_dimension,grid_half_dimension)
-X=plSymbol("X", coordinate_type)
-Y=plSymbol("Y", coordinate_type)
+X=plVariable("X", coordinate_type)
+Y=plVariable("Y", coordinate_type)
 
 #define the probabilistic variables associated to range and bearing
 distance_type = plIntegerType(0,grid_half_dimension * 2)
 bearing_type = plIntegerType(0,359)
 
 #distances
-D1=plSymbol("D1",distance_type)
-D2=plSymbol("D2",distance_type)
-D3=plSymbol("D3",distance_type)
+D1=plVariable("D1",distance_type)
+D2=plVariable("D2",distance_type)
+D3=plVariable("D3",distance_type)
 
 #bearings
-B1=plSymbol("B1",bearing_type)
-B2=plSymbol("B2",bearing_type)
-B3=plSymbol("B3",bearing_type)
+B1=plVariable("B1",bearing_type)
+B2=plVariable("B2",bearing_type)
+B3=plVariable("B3",bearing_type)
 
 #define the function necessary to compute the mean and the standard deviation of the distance to 
 # each beacon knowing the position X and Y

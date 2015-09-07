@@ -26,11 +26,11 @@ def dices_game(O,S) :
 #example 
 
 N=3
-O=plArray("O",plIntegerType(1,6),1,N+1)
+O=plVariableCollection("O",plIntegerType(1,6),1,N+1)
 S=[]
 S.append("null")
 for i in range(1,N+1):
-    S.append(plSymbol("S"+str(i),plIntegerType(i,i*6))) 
+    S.append(plVariable("S"+str(i),plIntegerType(i,i*6))) 
 
 D3=dices_game(O,S)
 PS3kO1=D3.ask(S[3],O[1])

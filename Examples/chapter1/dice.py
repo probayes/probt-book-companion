@@ -4,7 +4,7 @@ from pyplpath import *
 from pypl import *
 
 # define a probabilistic variable 
-dice= plSymbol("Dice", plIntegerType(1,6))
+dice= plVariable("Dice", plIntegerType(1,6))
 #define a way to adress the values   
 dice_value = plValues(dice)
 

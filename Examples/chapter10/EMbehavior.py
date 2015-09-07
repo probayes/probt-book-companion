@@ -30,9 +30,9 @@ def learner(filename):
     return VrotDirProxLearner
 
 # definition of the variabes 
-Dir = plSymbol('Dir',plIntegerType(-10,10))
-Prox = plSymbol('Prox',plIntegerType(0,15))
-Vrot = plSymbol('Vrot',plIntegerType(-10,10))
+Dir = plVariable('Dir',plIntegerType(-10,10))
+Prox = plVariable('Prox',plIntegerType(0,15))
+Vrot = plVariable('Vrot',plIntegerType(-10,10))
 
 
 #define de distributions 
@@ -55,7 +55,7 @@ render_description=plJointDistribution(Vrot^Dir^Prox,Decomposition)
 render_question=render_description.ask(Vrot,Dir^Prox)
 
 ##### define the avoidance code 
-Theta = plSymbol('Theta',plIntegerType(-10,10))
+Theta = plVariable('Theta',plIntegerType(-10,10))
 PTheta=plUniform(Theta) 
 Decomposition=plComputableObjectList()
 Decomposition.push_back(PTheta)
@@ -67,7 +67,7 @@ phototaxy_question=phototaxy_description.ask(Vrot,Theta)
 #the proximity is measured by infrared sensors a proximity of 0 means :
 #far away and 15 means close from obstacles. 
 
-H=plSymbol("H",plIntegerType(0,1))
+H=plVariable("H",plIntegerType(0,1))
 
 PH_init= plDistributionTable(H,Prox,Prox)
 random=True

@@ -2,8 +2,8 @@ from pyplpath import *
 from pypl import *
 import os.path
 
-C = plSymbol('C',plIntegerType(0,1))
-W = plSymbol('W',plRealType(0,100))
+C = plVariable('C',plIntegerType(0,1))
+W = plVariable('W',plRealType(0,100))
 #define a ML learner for a binomial law
 pC_learner = plLearnHistogram(C)
 pW_learner = plCndLearn1dNormal(W,C)

@@ -40,9 +40,9 @@ def render(dir,prox):
 
 
 # definition of the variabes (4.3)
-Dir = plSymbol('Dir',plIntegerType(-10,10))
-Prox = plSymbol('Prox',plIntegerType(0,15))
-Vrot = plSymbol('Vrot',plIntegerType(-10,10))
+Dir = plVariable('Dir',plIntegerType(-10,10))
+Prox = plVariable('Prox',plIntegerType(0,15))
+Vrot = plVariable('Vrot',plIntegerType(-10,10))
 
 #define de distributions (4.5)
 PDirProx=plUniform(Dir^Prox) 

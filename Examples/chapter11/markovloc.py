@@ -14,16 +14,16 @@ grid_discretization_steps = grid_half_dimension * 2
 #define the probabilistic variables associated to the location 
 coordinate_type = plDiscreteIntervalType(-grid_half_dimension,grid_half_dimension,30)
 
-Xt_1=plSymbol("Xt_1", coordinate_type)
-Yt_1=plSymbol("Yt_1", coordinate_type)
-Xt=plSymbol("Xt", coordinate_type)
-Yt=plSymbol("Yt", coordinate_type)
+Xt_1=plVariable("Xt_1", coordinate_type)
+Yt_1=plVariable("Yt_1", coordinate_type)
+Xt=plVariable("Xt", coordinate_type)
+Yt=plVariable("Yt", coordinate_type)
 
 #define the probabilistic variables associated to the location 
 speed_type = plIntegerType(-5,+5)
 
-Mxt_1=plSymbol("Mxt_1", speed_type)
-Myt_1=plSymbol("Myt_1", speed_type)
+Mxt_1=plVariable("Mxt_1", speed_type)
+Myt_1=plVariable("Myt_1", speed_type)
 
 
 #define the probabilistic variables associated to range and bearing
@@ -31,9 +31,9 @@ distance_type = plIntegerType(0,grid_half_dimension * 2)
 bearing_type = plIntegerType(0,359)
 
 #bearings
-B1=plSymbol("B1",bearing_type)
-B2=plSymbol("B2",bearing_type)
-B3=plSymbol("B3",bearing_type)
+B1=plVariable("B1",bearing_type)
+B2=plVariable("B2",bearing_type)
+B3=plVariable("B3",bearing_type)
 
 #define the function necessary to of the bearing to 
 #each beacon knowing the position X and Y.

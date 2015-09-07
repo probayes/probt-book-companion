@@ -3,8 +3,8 @@ from pypl import *
 import os.path
 
 file = os.path.join(ExDir, 'chapter15', 'data', 'weights.csv')
-C = plSymbol('C',plIntegerType(0,1))
-W = plSymbol('W',plRealType(0,100))
+C = plVariable('C',plIntegerType(0,1))
+W = plVariable('W',plRealType(0,100))
 #define a binomial law P(C=1) = 0.55
 pC=plBinomial(C,0.55)
 #define a conditonnal probability table 

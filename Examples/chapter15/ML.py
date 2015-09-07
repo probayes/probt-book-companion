@@ -2,8 +2,8 @@ from pyplpath import *
 from pypl import *
 import os.path
 
-O = plSymbol('O',plRealType(-100,100))
-O_I=plSymbol('O_I',plIntegerType(0,2))
+O = plVariable('O',plRealType(-100,100))
+O_I=plVariable('O_I',plIntegerType(0,2))
 file = os.path.join(ExDir, 'chapter15', 'data', 'previous_O.csv')
 #define the data source ignoring unknown fields
 previous_O=plCSVDataDescriptor(file,O^O_I)
@@ -27,7 +27,7 @@ previous_O.rewind()
 learner_O_I.reset()
 learner_O.reset()
 #define a vector of distributions to learn 
-global_learner = plLearnDistribVector([learner_O_I,learner_O],O_I^O)
+global_learner = plLearnDistributions([learner_O_I,learner_O],O_I^O)
 i=global_learner.learn(previous_O)
 list_distrib=global_learner.get_computable_object_list()
 print 'global learning \n',list_distrib[0],'\n',list_distrib[1]

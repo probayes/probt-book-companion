@@ -13,17 +13,17 @@ grid_discretization_steps = grid_half_dimension * 2
 
 #define the probabilistic variables associated to location 
 coordinate_type = plIntegerType(-grid_half_dimension+1,grid_half_dimension)
-X=plSymbol("X", coordinate_type)
-Y=plSymbol("Y", coordinate_type)
+X=plVariable("X", coordinate_type)
+Y=plVariable("Y", coordinate_type)
 
 #bearings
 bearing_type = plLabelType(["NE","SE","NW","SW"])
-B1=plSymbol("B1",bearing_type)
-B2=plSymbol("B2",bearing_type)
-B3=plSymbol("B3",bearing_type)
+B1=plVariable("B1",bearing_type)
+B2=plVariable("B2",bearing_type)
+B3=plVariable("B3",bearing_type)
 
 #danger
-C=plSymbol("C",plIntegerType(0,1))
+C=plVariable("C",plIntegerType(0,1))
 
 
 #defining the probability function for Danger

@@ -24,13 +24,13 @@ def WGenericsensorModel(S,I,F):
 #define the type and the variables 
 
 Wtype = plIntegerType(0,10)
-I0=plSymbol('I0',Wtype)
-I1=plSymbol('I1',Wtype)
-I3=plSymbol('I3',Wtype)
-F=plArray('F',Wtype,1,4)
-S=plArray('S',Wtype,1,4)
-C=plArray('C',Wtype,1,4)
-O=plArray('O',Wtype,1,4)
+I0=plVariable('I0',Wtype)
+I1=plVariable('I1',Wtype)
+I3=plVariable('I3',Wtype)
+F=plVariableCollection('F',Wtype,1,4)
+S=plVariableCollection('S',Wtype,1,4)
+C=plVariableCollection('C',Wtype,1,4)
+O=plVariableCollection('O',Wtype,1,4)
 
 
 JointDistributionList=plComputableObjectList()
@@ -119,8 +119,8 @@ print resultE.compile()
 #resultE.plot(os.path.join(ExDir, 'chapter6', 'figures', 'DirectO3WithCEqualOptimum'))
 
 #introducing a constraint
-H=plSymbol('H',plIntegerType(0,1))
-VALMIN = plSymbol('VALMIN',plIntegerType(0,9))
+H=plVariable('H',plIntegerType(0,1))
+VALMIN = plVariable('VALMIN',plIntegerType(0,9))
 
 
 #introducing a constraint

@@ -11,9 +11,9 @@ d=1
 #number of elements -1 
 n=1
 
-A=plSymbol("A", plIntegerType(0,9))
-B=plSymbol("B", plIntegerType(0,n))
-C=plArray("C",plIntegerType(0,n),1,4*d+5+1)
+A=plVariable("A", plIntegerType(0,9))
+B=plVariable("B", plIntegerType(0,n))
+C=plVariableCollection("C",plIntegerType(0,n),1,4*d+5+1)
 
 JointDistributionList=plComputableObjectList()
 

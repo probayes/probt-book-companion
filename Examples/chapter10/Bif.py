@@ -44,9 +44,9 @@ def render(dir,prox):
 
 
 # definition of the variabes (4.3)
-Dir = plSymbol('Dir',plIntegerType(-10,10))
-Prox = plSymbol('Prox',plIntegerType(0,15))
-Vrot = plSymbol('Vrot',plIntegerType(-10,10))
+Dir = plVariable('Dir',plIntegerType(-10,10))
+Prox = plVariable('Prox',plIntegerType(0,15))
+Vrot = plVariable('Vrot',plIntegerType(-10,10))
 
 #define de distributions (4.5)
 PDirProx=plComputableObject(plUniform(Dir)*plUniform(Prox))
@@ -68,7 +68,7 @@ render_description=plJointDistribution(Vrot^Dir^Prox,Decomposition)
 render_question=render_description.ask(Vrot,Dir^Prox)
 
 ##### define the avoidance code 
-Theta = plSymbol('Theta',plIntegerType(-10,10))
+Theta = plVariable('Theta',plIntegerType(-10,10))
 PTheta=plUniform(Theta) 
 Decomposition=plComputableObjectList()
 Decomposition.push_back(PTheta)
@@ -90,7 +90,7 @@ def generic_H_prob_function(alpha,beta):
             return 1-v
     return H_prob_function
 
-H=plSymbol("H",plIntegerType(0,1))
+H=plVariable("H",plIntegerType(0,1))
 PH = plCndAnonymousDistribution(
     H,Prox,plPythonExternalProbFunction(
         H^Prox,generic_H_prob_function(9,0.25 )))

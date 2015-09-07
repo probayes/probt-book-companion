@@ -38,15 +38,15 @@ def WsensorModel(Output_,Input_):
 #define the type and the variables 
 
 Wtype = plIntegerType(0,10)
-I0=plSymbol('I0',Wtype)
-I1=plSymbol('I1',Wtype)
-F=plSymbol('F',Wtype)
-S=plSymbol('S',Wtype)
-C=plSymbol('C',Wtype)
-O=plSymbol('O',Wtype)
+I0=plVariable('I0',Wtype)
+I1=plVariable('I1',Wtype)
+F=plVariable('F',Wtype)
+S=plVariable('S',Wtype)
+C=plVariable('C',Wtype)
+O=plVariable('O',Wtype)
 
 #note the variable H which is used to perform the simulation
-H=plSymbol('H',Wtype)
+H=plVariable('H',Wtype)
 
 
 #used to build figure 3.11 

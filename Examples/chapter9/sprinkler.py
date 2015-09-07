@@ -6,9 +6,9 @@ from pypl import *
 Booltype = plIntegerType(0,1)
 
 #define the variable for the submodel 
-Rain=plSymbol('Rain',Booltype)
-Sprinkler=plSymbol("Sprinkler",Booltype)
-GrassWet=plSymbol("GrassWet",Booltype)
+Rain=plVariable('Rain',Booltype)
+Sprinkler=plVariable("Sprinkler",Booltype)
+GrassWet=plVariable("GrassWet",Booltype)
 
 #define the distribution for the submodel 
 PRainParis=plProbTable(Rain,[0.7,0.3]) #prior on raining probability 
@@ -30,7 +30,7 @@ print 'Paris', submodel.ask(Rain,GrassWet)\
 .instantiate([1]).compile()
 
 #define the new variable of the model
-Roof=plSymbol('Roof',Booltype)
+Roof=plVariable('Roof',Booltype)
 
 #define the new decomposition using question to another program 
 jointlist=plComputableObjectList()
@@ -87,7 +87,7 @@ print 'Paris', model.ask(Roof,GrassWet)\
 
 #selecting subroutines 
 #defines a new variable
-Location = plSymbol("Location", plLabelType(['Paris','Nice']))
+Location = plVariable("Location", plLabelType(['Paris','Nice']))
 locval=plValues(Location)
 
 jointlist=plComputableObjectList()

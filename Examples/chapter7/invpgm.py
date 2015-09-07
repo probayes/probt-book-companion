@@ -10,9 +10,9 @@ import os.path
 bearing_type = plIntegerType(0,359)
 
 #bearings
-B1=plSymbol("B1",bearing_type)
-B0=plSymbol("B0",bearing_type)
-H=plSymbol("H",bearing_type)
+B1=plVariable("B1",bearing_type)
+B0=plVariable("B0",bearing_type)
+H=plVariable("H",bearing_type)
 
 #define the  proper distribution  
 

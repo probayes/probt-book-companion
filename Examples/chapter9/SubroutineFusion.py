@@ -11,24 +11,24 @@ grid_discretization_steps = grid_half_dimension * 2
 
 #define the probabilistic variables associated to location 
 coordinate_type = plIntegerType(-grid_half_dimension,grid_half_dimension)
-X=plSymbol("X", coordinate_type)
-Y=plSymbol("Y", coordinate_type)
+X=plVariable("X", coordinate_type)
+Y=plVariable("Y", coordinate_type)
 
 #define the probabilistic variables associated to range and bearing
 distance_type = plIntegerType(0,grid_half_dimension * 2)
 bearing_type = plIntegerType(0,359)
 
 #distances
-D2=plSymbol("D2",distance_type)
-D3=plSymbol("D3",distance_type)
+D2=plVariable("D2",distance_type)
+D3=plVariable("D3",distance_type)
 
 #fault tree
-F2=plSymbol("F2",plIntegerType(0,1))
-F3=plSymbol("F3",plIntegerType(0,1))
-A2=plSymbol("A2",plIntegerType(0,1))
-A3=plSymbol("A3",plIntegerType(0,1))
-B2=plSymbol("B2",plIntegerType(0,1))
-B3=plSymbol("B3",plIntegerType(0,1))
+F2=plVariable("F2",plIntegerType(0,1))
+F3=plVariable("F3",plIntegerType(0,1))
+A2=plVariable("A2",plIntegerType(0,1))
+A3=plVariable("A3",plIntegerType(0,1))
+B2=plVariable("B2",plIntegerType(0,1))
+B3=plVariable("B3",plIntegerType(0,1))
 
 
 #define the function necessary to compute the mean and the standard deviation of the distance to 

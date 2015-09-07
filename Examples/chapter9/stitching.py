@@ -18,17 +18,17 @@ grid_discretization_steps = grid_half_dimension * 2
 #use to compile the code on pc
 coordinate_type = plDiscreteIntervalType(-grid_half_dimension,grid_half_dimension,50)
 
-XB=plSymbol("XB", coordinate_type)
-YB=plSymbol("YB", coordinate_type)
+XB=plVariable("XB", coordinate_type)
+YB=plVariable("YB", coordinate_type)
 
 #define the probabilistic variables associated to range and bearing
 distance_type = plIntegerType(0,grid_half_dimension * 2)
 bearing_type = plIntegerType(0,359)
 
 #bearings
-B1=plSymbol("B1",bearing_type)
-B2=plSymbol("B2",bearing_type)
-B3=plSymbol("B3",bearing_type)
+B1=plVariable("B1",bearing_type)
+B2=plVariable("B2",bearing_type)
+B3=plVariable("B3",bearing_type)
 
 #define the function necessary to compute the mean and the standard deviation of the distance to 
 # each beacon knowing the position XB and YB
@@ -86,8 +86,8 @@ bearing_reading_values[B1]= 225
 bearing_reading_values[B2]= 180
 bearing_reading_values[B3]= 270
 
-X=plSymbol("X", coordinate_type)
-Y=plSymbol("Y", coordinate_type)
+X=plVariable("X", coordinate_type)
+Y=plVariable("Y", coordinate_type)
 
 
 
@@ -98,12 +98,12 @@ PXY_K_B1B2B3.rename(X^Y^B1^B2^B3)
 #defines the model with distances
 
 #distances
-D1=plSymbol("D1",distance_type)
-D2=plSymbol("D2",distance_type)
-D3=plSymbol("D3",distance_type)
+D1=plVariable("D1",distance_type)
+D2=plVariable("D2",distance_type)
+D3=plVariable("D3",distance_type)
 
-XD=plSymbol("XD", coordinate_type)
-YD=plSymbol("YD", coordinate_type)
+XD=plVariable("XD", coordinate_type)
+YD=plVariable("YD", coordinate_type)
 
 distance_reading_values=plValues(D1^D2^D3)
 #estimating the location when the readings (distances and bearing) are perfect
@@ -169,11 +169,11 @@ def cdf(out, XdYd):
     out[0] = XdYd[0].to_int()
     out[1] = XdYd[1].to_int()
 
-CD = plSymbol("CD", PL_BINARY_TYPE)
+CD = plVariable("CD", PL_BINARY_TYPE)
 PCD__XdYd = plIneqConstraint(CD, plPythonExternalFunction(XD^YD, cdf), 2)
 JointDistributionList.push_back(PCD__XdYd)
 
-CB = plSymbol("CB", PL_BINARY_TYPE)
+CB = plVariable("CB", PL_BINARY_TYPE)
 PCB__XbYb = plIneqConstraint(CB, plPythonExternalFunction(XB^YB, cbf), 2)
 JointDistributionList.push_back(PCB__XbYb)
     
